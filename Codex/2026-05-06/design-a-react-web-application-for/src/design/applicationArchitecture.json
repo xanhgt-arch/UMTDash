@@ -1,0 +1,179 @@
+{
+  "applicationName": "Cooper Standard CAD Usage Analytics",
+  "technologyStack": {
+    "frontend": "React",
+    "buildTool": "Vite",
+    "dataSource": "MyReport_UsageData_2026-05-12.csv",
+    "styling": "CSS variables with a blue and yellow Cooper Standard logo-aligned theme",
+    "visualizations": "Custom SVG line, bar, heatmap, horizontal bar, and pie charts",
+    "excelExport": "SheetJS .xlsx workbook generated in the browser"
+  },
+  "pages": [
+    {
+      "pageName": "Dashboard",
+      "route": "/dashboard",
+      "description": "Primary page for CAD automation usage visualization from the uploaded report.",
+      "graphs": [
+        {
+          "graphId": "graph1_monthlyUsageRuns",
+          "title": "Monthly Usage Runs",
+          "type": "Interactive line chart",
+          "dataDisplayed": "Total report events aggregated by month",
+          "filters": [
+            "Start Date",
+            "End Date",
+            "CAD Tool",
+            "Product Line",
+            "Region"
+          ],
+          "features": [
+            "Dynamic filtering",
+            "Interactive SVG tooltips",
+            "Modern area-backed trend line"
+          ]
+        },
+        {
+          "graphId": "graph2_executionBreakdown",
+          "title": "Execution Breakdown",
+          "type": "Interactive bar chart",
+          "dataDisplayed": "Total usage runs aggregated by month and segmented through report filters",
+          "filters": [
+            "Start Date",
+            "End Date",
+            "Applications",
+            "Functionality",
+            "Environment",
+            "Access Mode"
+          ],
+          "features": [
+            "Dynamic filtering",
+            "Multi-application selection with application-driven functionality dropdown",
+            "Application-colored stacked monthly bars",
+            "Bar, line, and pie chart mode options",
+            "Interactive SVG tooltips",
+            "Download Data (.xlsx) scoped to selected applications, or all data when Applications is All"
+          ]
+        },
+        {
+          "graphId": "graph3_appComparison",
+          "title": "Application Usage Comparison",
+          "type": "Dual-line comparison chart",
+          "dataDisplayed": "Monthwise usage comparison between two selected Cooper Standard tools",
+          "filters": [
+            "Start Date",
+            "End Date",
+            "Application 1",
+            "Application 2"
+          ],
+          "features": [
+            "Dynamic filtering",
+            "Interactive comparison",
+            "Blue/yellow series contrast"
+          ]
+        },
+        {
+          "graphId": "graph4_monthlyUsageHeatmap",
+          "title": "Monthly Usage Heatmap",
+          "type": "Interactive heatmap",
+          "dataDisplayed": "Total usage events by month",
+          "filters": [],
+          "features": [
+            "Peak month visibility",
+            "Interactive tooltips",
+            "Blue and yellow usage intensity palette"
+          ]
+        },
+        {
+          "graphId": "graph5_mostUsedApplications",
+          "title": "Most Used Applications",
+          "type": "Horizontal bar chart",
+          "dataDisplayed": "Applications ranked by total usage",
+          "filters": [],
+          "features": [
+            "Ranked application usage",
+            "Interactive tooltips",
+            "Blue bar treatment"
+          ]
+        },
+        {
+          "graphId": "graph6_productLineMix",
+          "title": "Product Line Mix",
+          "type": "Pie chart",
+          "dataDisplayed": "Usage distribution by product line",
+          "filters": [
+            "Start Date",
+            "End Date",
+            "CAD Tool",
+            "Region"
+          ],
+          "features": [
+            "Dynamic filtering",
+            "Blue and yellow product-line contrast",
+            "Interactive tooltips"
+          ]
+        }
+      ]
+    }
+  ],
+  "dataHandling": {
+    "csvIngestionMethod": "The app imports the uploaded CSV as a Vite asset, fetches it at runtime, detects the real header row after the report preamble, parses it client-side, normalizes MM/DD/YYYY dates, derives a YYYY-MM month bucket from StartDate, and treats each row as one usage event.",
+    "dataStructureExample": {
+      "applicationName": "SMART CVT",
+      "functionality": "INNER VOLUME",
+      "cadTool": "CATIA",
+      "productLine": "FLUIDS",
+      "status": "Success",
+      "region": "NA",
+      "startDate": "2025-01-07",
+      "stopDate": "2025-01-07",
+      "month": "2025-01",
+      "isProd": true,
+      "isVDI": true,
+      "usageCount": 1
+    },
+    "dataFlow": "Uploaded CSV asset -> csvLoader header detection and normalization -> derived month buckets -> dataProcessor month filters and month aggregations -> dashboard page state -> SVG visualization components and Excel export."
+  },
+  "stylingGuidelines": {
+    "colorPalette": {
+      "primaryBlue": "#005EB8",
+      "deepBlue": "#003F7D",
+      "yellow": "#FFC20E",
+      "skyBlue": "#00A3E0",
+      "navyText": "#12365A",
+      "background": "#F3F8FC",
+      "surface": "#FFFFFF",
+      "border": "#D5E1EC"
+    },
+    "fontFamilies": "Arial, Helvetica, sans-serif",
+    "uiElementsStyle": "Modern enterprise dashboard UI with a deep-blue sidebar, white logo panel, yellow primary action, subtle blue shadows, rounded but compact controls, and dense chart surfaces."
+  },
+  "folderStructure": {
+    "src": {
+      "assets": [
+        "data/MyReport_UsageData_2026-05-12.csv",
+        "images/cooper-standard-logo.svg"
+      ],
+      "components": [
+        "Common/",
+        "Charts/"
+      ],
+      "pages": [
+        "DashboardPage.tsx"
+      ],
+      "services": [
+        "csvLoader.ts",
+        "dataProcessor.ts",
+        "excelExport.ts"
+      ],
+      "styles": [
+        "globals.css"
+      ],
+      "design": [
+        "applicationArchitecture.json"
+      ],
+      "App.tsx": "Root application component and route state",
+      "main.tsx": "Entry point"
+    }
+  },
+  "notes": "The previous sample CSV has been removed from the app data path. The current application uses the uploaded 2026-05-12 report file."
+}
