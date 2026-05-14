@@ -223,8 +223,10 @@ button {
   min-width: 0;
   padding: 34px;
   background:
-    linear-gradient(135deg, rgba(255, 194, 14, 0.1), transparent 22%),
-    linear-gradient(180deg, rgba(3, 26, 51, 0.24), rgba(3, 26, 51, 0.56));
+    linear-gradient(135deg, rgba(255, 194, 14, 0.12), transparent 22%),
+    linear-gradient(180deg, rgba(3, 26, 51, 0.54), rgba(3, 26, 51, 0.72)),
+    url('../assets/images/carbg.png') center center / cover no-repeat;
+  background-attachment: fixed;
 }
 
 .page-stack {
