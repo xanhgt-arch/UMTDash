@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 168" role="img" aria-labelledby="title">
+  <title id="title">CooperStandard</title>
+  <rect width="300" height="168" fill="#ffffff"/>
+  <g transform="translate(20 58)">
+    <path fill="#005eb8" d="M34 2C17 7 4 16 0 27c-3 9 5 16 24 20-12-5-18-12-15-20C13 17 23 9 34 2Z"/>
+    <path fill="#005eb8" d="M38 9C21 15 12 23 13 30c1 7 10 12 25 15-11-5-16-10-14-16 2-7 7-14 14-20Z" opacity="0.96"/>
+    <path fill="#ffc20e" d="M42 15c18 4 30 13 30 25 0 12-10 22-31 30 12-8 18-16 16-23-2-8-11-14-28-19 4-6 8-10 13-13Z"/>
+    <path fill="#ffc20e" d="M2 70c24 1 45-3 62-14-11 19-38 29-72 23 2-4 5-7 10-9Z"/>
+  </g>
+  <text
+    x="66"
+    y="94"
+    fill="#005eb8"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="38"
+    font-weight="800"
+  >CooperStandard</text>
+</svg>
