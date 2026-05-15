@@ -1,6 +1,7 @@
 import { useId, useState } from 'react';
 import ChartTooltip, { getTooltipPosition } from '../Common/ChartTooltip';
 import EmptyState from '../Common/EmptyState';
+import { getAxisScale } from './axisScale';
 import { chartBlue, chartYellow } from './chartPalette';
 
 const width = 760;
@@ -13,7 +14,8 @@ export default function TimeSeriesChart({ data, variant = 'line', color = chartB
 
   if (!data.length) return <EmptyState />;
 
-  const max = Math.max(...data.map((item) => item.value), 1);
+  const rawMax = Math.max(...data.map((item) => item.value), 1);
+  const { max, ticks } = getAxisScale(rawMax);
   const innerWidth = width - padding.left - padding.right;
   const innerHeight = height - padding.top - padding.bottom;
   const axisLabelY = padding.top + innerHeight + 14;
@@ -49,7 +51,7 @@ export default function TimeSeriesChart({ data, variant = 'line', color = chartB
             <stop offset="100%" stopColor={chartYellow} stopOpacity="0.08" />
           </linearGradient>
         </defs>
-        <ChartGrid max={max} />
+        <ChartGrid max={max} ticks={ticks} />
 
         {variant === 'bar'
           ? data.map((item, index) => {
@@ -146,19 +148,18 @@ function ValueLabel({ x, y, value }) {
   );
 }
 
-function ChartGrid({ max }) {
-  const ticks = [0, 0.25, 0.5, 0.75, 1];
+function ChartGrid({ max, ticks }) {
   const innerHeight = height - padding.top - padding.bottom;
 
   return (
     <>
       {ticks.map((tick) => {
-        const y = padding.top + innerHeight - tick * innerHeight;
+        const y = padding.top + innerHeight - (tick / max) * innerHeight;
         return (
           <g key={tick}>
             <line className="grid-line" x1={padding.left} x2={width - padding.right} y1={y} y2={y} />
             <text className="axis-value" x={padding.left - 12} y={y + 4} textAnchor="end">
-              {Math.round(max * tick).toLocaleString()}
+              {tick.toLocaleString()}
             </text>
           </g>
         );

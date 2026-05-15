@@ -52,3 +52,4 @@
       at async EnvironmentPluginContainer.transform (file:///C:/Users/KIIT/Documents/Codex/2026-05-06/design-a-react-web-application-for/node_modules/vite/dist/node/chunks/config.js:28801:14)
       at async loadAndTransform (file:///C:/Users/KIIT/Documents/Codex/2026-05-06/design-a-react-web-application-for/node_modules/vite/dist/node/chunks/config.js:22670:26)
       at async viteTransformMiddleware (file:///C:/Users/KIIT/Documents/Codex/2026-05-06/design-a-react-web-application-for/node_modules/vite/dist/node/chunks/config.js:24546:20)
+^C^C
